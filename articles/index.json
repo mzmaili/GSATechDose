@@ -1,0 +1,137 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "filename": "article-1.json",
+            "title": "GSATechDose #1",
+            "date": "May 21, 2025",
+            "author": "GSATechDose Team",
+            "categories": ["Introduction", "Security"],
+            "tags": ["welcome", "Global Secure Access", "Zero Trust"]
+        },
+        {
+            "id": 2,
+            "filename": "article-2.json",
+            "title": "GSATechDose #2",
+            "date": "May 22, 2025",
+            "author": "GSATechDose Team",
+            "categories": ["Technology", "General"],
+            "tags": ["technology", "trends"]
+        },
+        {
+            "id": 3,
+            "filename": "article-3.json",
+            "title": "GSATechDose #3",
+            "date": "May 23, 2025",
+            "author": "Web Development Team",
+            "categories": ["Web Development", "Tutorial"],
+            "tags": ["HTML", "CSS", "JavaScript", "best practices"]
+        },        {
+            "id": 4,
+            "filename": "article-4.json",
+            "title": "GSATechDose #4",
+            "date": "May 24, 2025",
+            "author": "Cloud Team",
+            "categories": ["Cloud Computing", "Tutorial"],
+            "tags": ["AWS", "Azure", "GCP", "cloud"]
+        },        {
+            "id": 5,
+            "filename": "article-5.json",
+            "title": "GSATechDose #5",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 6,
+            "filename": "article-6.json",
+            "title": "GSATechDose #6",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 7,
+            "filename": "article-7.json",
+            "title": "GSATechDose #7",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 8,
+            "filename": "article-8.json",
+            "title": "GSATechDose #8",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 9,
+            "filename": "article-9.json",
+            "title": "GSATechDose #9",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 10,
+            "filename": "article-10.json",
+            "title": "GSATechDose #10",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 11,
+            "filename": "article-11.json",
+            "title": "GSATechDose #11",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 12,
+            "filename": "article-12.json",
+            "title": "GSATechDose #12",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 13,
+            "filename": "article-13.json",
+            "title": "GSATechDose #13",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 14,
+            "filename": "article-14.json",
+            "title": "GSATechDose #14",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        },
+        {
+            "id": 15,
+            "filename": "article-15.json",
+            "title": "GSATechDose #15",
+            "date": "May 24, 2025",
+            "author": "Security Team",
+            "categories": ["Security", "Advanced"],
+            "tags": ["zero trust", "conditional access", "security best practices"]
+        }
+    ]
+}

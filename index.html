@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSATechDose - Articles</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="images/icon-tech.png" type="image/png">
+    <link rel="icon" href="images/icon-tech.png" type="image/png">
+    <!-- SEO and Accessibility meta tags -->
+    <meta name="description" content="GSATechDose is a knowledge-sharing platform dedicated to providing high-quality technical articles about Microsoft Global Secure Access technology.">
+    <meta name="keywords" content="GSA, technology, articles, tutorials, software development, web technologies, AI, cloud computing">
+    <meta name="author" content="GSATechDose Team">
+    <!-- Open Graph protocol for better social sharing -->    <meta property="og:title" content="GSATechDose - Articles">
+    <meta property="og:description" content="Your Regular Dose of Global Secure Access Insights">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gsatechdose.github.io/">
+    <meta property="og:image" content="https://gsatechdose.github.io/images/gsatechdose-logo.png">    <!-- Twitter card for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GSATechDose - Articles">
+    <meta name="twitter:description" content="Your Regular Dose of Global Secure Access Insights">
+    <meta name="twitter:image" content="https://gsatechdose.github.io/images/gsatechdose-logo.png">
+</head>
+<body>    <a href="#article-container" class="skip-link">Skip to content</a>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+    <div class="container">        <nav class="sidebar">
+            <div class="sidebar-header">                <h2>
+                    <a href="#" id="home-link">
+                        <img src="images/icon-tech.png" alt="GSATechDose Icon" class="sidebar-icon" onerror="this.src='https://via.placeholder.com/24?text=G'">
+                        GSATechDose
+                    </a>
+                </h2>
+            </div>            <div class="sidebar-search">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search articles">
+                    <button id="search-button" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>            </div>
+            <div class="sidebar-menu">
+                <ul id="article-menu">
+                    <!-- Menu items will be populated by JavaScript -->
+                </ul>
+            </div>
+            <div class="sidebar-navigation">
+                <h3>Navigation</h3>
+                <ul class="nav-list">
+                    <li><a href="#" id="all-articles-nav" title="View all articles"><i class="fas fa-list"></i> All Articles</a></li>
+                    <li><a href="#" id="categories-nav" title="Browse by categories"><i class="fas fa-tags"></i> Categories</a></li>
+                </ul>            </div>
+        </nav>
+        <main class="content">
+            <div id="article-container">
+                <!-- Articles will be loaded here -->                <div class="welcome-message">
+                    <h1>Welcome to GSATechDose</h1>                    <div class="project-logo">
+                        <img src="images/gsatechdose-logo.png" alt="GSATechDose Logo" onerror="this.src='https://via.placeholder.com/300x200?text=GSATechDose'" width="300">
+                    </div>                    <div class="project-description">                        <h2>Your Regular Dose of Global Secure Access Insights</h2>
+                        <p>GSATechDose is a knowledge-sharing platform dedicated to providing high-quality technical articles, tutorials, and insights on Microsoft Global Secure Access technology.</p>
+                        <p>Our mission is to simplify complex technical concepts and make learning accessible to everyone - from beginners to experienced professionals.</p>
+                        <h3>What We Cover:</h3>
+                        <div class="topic-grid">
+                            <div class="topic-item">
+                                <i class="fas fa-code" aria-hidden="true"></i>
+                                <span>Software Development</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-globe" aria-hidden="true"></i>
+                                <span>Web Technologies</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-brain" aria-hidden="true"></i>
+                                <span>Artificial Intelligence</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-database" aria-hidden="true"></i>
+                                <span>Data Science</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-cloud" aria-hidden="true"></i>
+                                <span>Cloud Computing</span>
+                            </div>
+                            <div class="topic-item">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span>Cybersecurity</span>
+                            </div>                    </div>
+                        <p>Select an article from the menu on the left to begin reading.</p>
+                    </div>
+                </div>
+            </div>
+        </main>    </div>    <script src="js/articles-simple.js"></script>
+    <script src="js/social-share.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

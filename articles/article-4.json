@@ -1,0 +1,9 @@
+{
+    "id": 4,
+    "title": "GSATechDose #4",
+    "date": "May 24, 2025",
+    "author": "Cloud Team",
+    "categories": ["Cloud Computing", "Tutorial"],
+    "tags": ["AWS", "Azure", "GCP", "cloud"],
+    "content": "Cloud computing has revolutionized the way businesses deploy and manage their IT infrastructure. In this article, we'll explore the basics of cloud computing and its benefits.\n\n## What is Cloud Computing?\nCloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet (\"the cloud\").\n\n## Types of Cloud Services\n- **IaaS (Infrastructure as a Service)**: Provides virtualized computing resources over the internet.\n- **PaaS (Platform as a Service)**: Provides a platform allowing customers to develop, run, and manage applications.\n- **SaaS (Software as a Service)**: Delivers software applications over the internet, on-demand and typically on a subscription basis.\n\n## Major Cloud Providers\n- Amazon Web Services (AWS)\n- Microsoft Azure\n- Google Cloud Platform (GCP)\n- IBM Cloud"
+}
