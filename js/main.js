@@ -2,9 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
     const articleMenu = document.getElementById('article-menu');
     const articleContainer = document.getElementById('article-container');
-    const homeLink = document.getElementById('home-link');
-    const searchInput = document.getElementById('search-input');
+    const homeLink = document.getElementById('home-link');    const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
+    const searchToggle = document.getElementById('search-toggle');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchCloseBtn = document.getElementById('search-close');
     const themeToggle = document.getElementById('theme-toggle');
     const allArticlesNav = document.getElementById('all-articles-nav');
     const categoriesNav = document.getElementById('categories-nav');
@@ -39,10 +41,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             }
         });
-    }
-    
-    // Search functionality
+    }    // Search functionality
     function setupSearch() {
+        // Get fresh references to DOM elements
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        const searchToggle = document.getElementById('search-toggle');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchCloseBtn = document.getElementById('search-close');
+        
+        // Add null checks to prevent errors
+        if (!searchToggle || !searchOverlay || !searchCloseBtn || !searchInput || !searchButton) {
+            console.error('Search elements not found. Retrying in 500ms...');
+            setTimeout(setupSearch, 500);
+            return;
+        }
+
+        console.log('Search functionality setup successful!');
+
+        // Show search overlay when search toggle is clicked
+        searchToggle.addEventListener('click', function() {
+            showSearchOverlay();
+        });
+
+        // Hide search overlay when close button is clicked
+        searchCloseBtn.addEventListener('click', function() {
+            hideSearchOverlay();
+        });
+
+        // Hide search overlay when clicking outside the search box
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) {
+                hideSearchOverlay();
+            }
+        });
+
+        // Hide search overlay when ESC key is pressed
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                hideSearchOverlay();
+            }
+        });
+
         // Search when button is clicked
         searchButton.addEventListener('click', function() {
             performSearch(searchInput.value);
@@ -54,6 +94,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 performSearch(searchInput.value);
             }
         });
+        
+        // Update the global references for use in other functions
+        window.searchElements = {
+            searchInput,
+            searchButton,
+            searchToggle,
+            searchOverlay,
+            searchCloseBtn
+        };
+    }    // Show search overlay with animation
+    function showSearchOverlay() {
+        const elements = window.searchElements;
+        if (elements && elements.searchOverlay) {
+            // Hide the search toggle container
+            const searchToggleContainer = document.querySelector('.search-toggle-container');
+            if (searchToggleContainer) {
+                searchToggleContainer.classList.add('hidden');
+            }
+            
+            elements.searchOverlay.classList.add('active');
+            // Focus on search input after animation completes
+            setTimeout(() => {
+                if (elements.searchInput) {
+                    elements.searchInput.focus();
+                }
+            }, 300);
+        }
+    }
+
+    // Hide search overlay with animation
+    function hideSearchOverlay() {
+        const elements = window.searchElements;
+        if (elements && elements.searchOverlay) {
+            elements.searchOverlay.classList.remove('active');
+            
+            // Restore the search toggle container
+            const searchToggleContainer = document.querySelector('.search-toggle-container');
+            if (searchToggleContainer) {
+                searchToggleContainer.classList.remove('hidden');
+            }
+        }
+        // Clear search input when hiding
+        if (elements && elements.searchInput) {
+            elements.searchInput.value = '';
+        }
     }
     
     // Function to highlight search terms in content
@@ -102,9 +187,11 @@ document.addEventListener('DOMContentLoaded', function() {
         
         return doc.body.innerHTML;
     }
-    
-    function performSearch(query) {
+      function performSearch(query) {
         if (!query.trim()) return;
+        
+        // Hide search overlay after search is performed
+        hideSearchOverlay();
         
         query = query.toLowerCase();
         
@@ -216,13 +303,11 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             searchResultsContainer.appendChild(noResults);
         }
-        
-        // Add button to clear search
+          // Add button to clear search
         const clearSearchButton = document.createElement('button');
         clearSearchButton.className = 'clear-search-button';
         clearSearchButton.innerHTML = '<i class="fas fa-times"></i> Clear Search';
         clearSearchButton.addEventListener('click', function() {
-            searchInput.value = '';
             showHomePage();
         });
         
@@ -320,8 +405,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   // Add social sharing buttons - but ensure we only add them once
                 const articleContentDiv = articleContainer.querySelector('.article-content');
                 const articleDiv = articleContainer.querySelector('.article');
-                
-                // Check if share buttons already exist to prevent duplication
+                  // Check if share buttons already exist to prevent duplication
                 if (!articleDiv.querySelector('.social-share-buttons')) {
                     const shareButtons = socialShare.generateShareButtons(article.title);
                     
@@ -331,11 +415,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         articleNav.insertAdjacentHTML('beforebegin', shareButtons);
                         socialShare.setupEventHandlers();
                         socialShare.updateShareUrls(article.title);
+                        // Update meta tags for better social sharing
+                        socialShare.updateMetaTags(article.title, 'GSATechDose - Your Regular Dose of Global Secure Access Insights');
                     } else {
                         // Fallback: add at the end of article content if no navigation found
                         articleContentDiv.insertAdjacentHTML('beforeend', shareButtons);
                         socialShare.setupEventHandlers();
                         socialShare.updateShareUrls(article.title);
+                        // Update meta tags for better social sharing
+                        socialShare.updateMetaTags(article.title, 'GSATechDose - Your Regular Dose of Global Secure Access Insights');
                     }
                 }
                 
@@ -1117,11 +1205,90 @@ document.addEventListener('DOMContentLoaded', function() {
                 history.pushState({page: "home"}, "GSATechDose - Articles", window.location.pathname);
             });
         }
-    }    // Initialize the page
+    }    // Mobile menu functionality
+    function setupMobileMenu() {
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const sidebar = document.getElementById('sidebar');
+        
+        if (!mobileMenuToggle || !mobileOverlay || !sidebar) {
+            return;
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const isOpen = sidebar.classList.contains('mobile-open');
+            
+            if (isOpen) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        }
+        
+        // Open mobile menu
+        function openMobileMenu() {
+            sidebar.classList.add('mobile-open');
+            mobileOverlay.classList.add('active');
+            mobileMenuToggle.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        }
+        
+        // Close mobile menu
+        function closeMobileMenu() {
+            sidebar.classList.remove('mobile-open');
+            mobileOverlay.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+        
+        // Event listeners
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+        
+        // Close menu when clicking on article links
+        const articleLinks = sidebar.querySelectorAll('a');
+        articleLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Close mobile menu after a short delay to allow navigation
+                setTimeout(closeMobileMenu, 150);
+            });
+        });
+          // Close menu on window resize if screen becomes larger
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Handle orientation change for better mobile UX
+        window.addEventListener('orientationchange', () => {
+            // Small delay to account for orientation change
+            setTimeout(() => {
+                if (window.innerWidth >= 768) {
+                    closeMobileMenu();
+                }
+            }, 100);
+        });
+        
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sidebar.classList.contains('mobile-open')) {
+                closeMobileMenu();
+            }
+        });
+    }
+    
+    // Initialize the page
     populateMenu();
-    setupSearch();
-    setupThemeToggle();
-    setupNavigation();
+    
+    // Add a small delay to ensure all DOM elements are ready
+    setTimeout(() => {
+        setupSearch();
+        setupThemeToggle();
+        setupNavigation();
+        setupMobileMenu();
+    }, 100);
     
     // We'll handle URL parameters in checkUrlParams,
     // no need for a separate check for home page

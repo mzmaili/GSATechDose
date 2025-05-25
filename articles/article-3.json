@@ -1,9 +1,0 @@
-{
-    "id": 3,
-    "title": "GSATechDose #3",
-    "date": "May 23, 2025",
-    "author": "Web Development Team",
-    "categories": ["Web Development", "Tutorial"],
-    "tags": ["HTML", "CSS", "JavaScript", "best practices"],
-    "content": "In this article, we'll cover essential web development best practices that every developer should follow to create high-quality, maintainable websites.\n\n## 1. Write Semantic HTML\nUsing semantic HTML elements like <header>, <nav>, <section>, and <footer> makes your code more readable and improves accessibility.\n\n## 2. Follow CSS Naming Conventions\nAdopt a consistent naming convention like BEM (Block, Element, Modifier) to create more maintainable CSS code.\n\n## 3. Optimize Performance\nMinimize HTTP requests, compress images, and use lazy loading to improve page load times.\n\n## 4. Ensure Accessibility\nMake your website accessible to all users, including those with disabilities, by following WCAG guidelines."
-}

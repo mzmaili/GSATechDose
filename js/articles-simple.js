@@ -64,7 +64,7 @@ function renderMarkdown(content) {
         if (isExternal) {
             return `<a href="${url}" class="external-link" target="_blank" rel="noopener">${text}</a>`;
         } else {
-            return `<a href="${url}" class="article-link">${text}</a>`;
+            return `<a href="${url}" class="article-link">${url}</a>`;
         }
     });
     
@@ -175,29 +175,28 @@ async function generateArticleHTML(article) {
 }
 
 // Article data in a GitHub-like structure for easy editing
-// Articles are now loaded from individual JSON files in the articles/ directory
-// with a fallback to embedded data for direct file opening
+// Articles are embedded directly in this file for easy management
 let articles = [];
 let articlesIndex = null;
 let articlesLoaded = false;
 
-// Minimal fallback embedded articles data for when files cannot be loaded (CORS restrictions)
-// This is just basic metadata - the actual content is loaded from articles/*.json files
+// Embedded articles data with full content
 const embeddedArticles = [
     {
         id: 1,
         title: "GSATechDose #1",
         date: "May 21, 2025",
         author: "GSATechDose Team",
-        categories: ["Introduction", "Security"],
-        tags: ["welcome", "Global Secure Access", "Zero Trust"],
+        categories: ["Global Secure Access", "Entra Internet Access", "Entra Private Access"],
+        tags: ["Global Secure Access", "Entra Internet Access", "Entra Private Access"],
         content: "![GSATechDose Logo](images/TechDose1.png)\n 🔐 **Did you know?** Microsoft's Global Secure Access brings together Entra Internet Access and Entra Private Access into a unified platform, enabling secure, identity-aware access to both public and private resources.\n\nThis is a game-changer for organizations embracing Zero Trust. With Global Secure Access, you can:\n ✅ Enforce Conditional Access policies across all traffic\n ✅ Protect users from malicious internet threats\n ✅ Secure access to internal apps without VPNs\n ✅ Leverage Microsoft's global edge network for performance and reliability\n\nWhether you're securing SaaS apps or legacy internal systems, this solution helps you do it all, securely and seamlessly.\n\n🔗 Learn more: [Microsoft Learn – What is Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)"
-    },    {
+    },
+    {
         id: 2,
         title: "GSATechDose #2",
         date: "May 22, 2025",
         author: "GSATechDose Team",
-        categories: ["Security", "Tutorial", "Zero Trust"],
+        categories: ["Global Secure Access", "Entra Private Access"],
         tags: ["Global Secure Access", "Entra Private Access", "Zero Trust", "VPN replacement", "getting started"],
         content: "![GSATechDose Logo](images/TechDose2.png)\n\n# 🚀 How to Get Started with Microsoft Global Secure Access\n\nLooking to modernize your network security and embrace Zero Trust? Microsoft's Global Secure Access is your gateway to secure, identity-aware access for both internet and private resources—without the need for legacy VPNs.\n\nHere's how to get started:\n\n✅ Enable 𝗘𝗻𝘁𝗿𝗮 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗔𝗰𝗰𝗲𝘀𝘀\n\n✅ Install & configure the 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗡𝗲𝘁𝘄𝗼𝗿𝗸 𝗖𝗼𝗻𝗻𝗲𝗰𝘁𝗼𝗿\n\n✅ Set up 𝗤𝘂𝗶𝗰𝗸 𝗔𝗰𝗰𝗲𝘀𝘀 as a VPN replacement\n\n✅ Install the 𝗚𝗹𝗼𝗯𝗮𝗹 𝗦𝗲𝗰𝘂𝗿𝗲 𝗔𝗰𝗰𝗲𝘀𝘀 𝗖𝗹𝗶𝗲𝗻𝘁\n\n✅ Seamlessly access 𝗼𝗻-𝗽𝗿𝗲𝗺 𝘀𝗵𝗮𝗿𝗲𝗱 𝗳𝗼𝗹𝗱𝗲𝗿𝘀\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\n[https://www.youtube.com/watch?v=MfcZ3zQhF-4](https://www.youtube.com/watch?v=MfcZ3zQhF-4)"
     },
@@ -205,166 +204,42 @@ const embeddedArticles = [
         id: 3,
         title: "GSATechDose #3",
         date: "May 23, 2025",
-        author: "Web Development Team",
-        categories: ["Web Development", "Tutorial"],
-        tags: ["HTML", "CSS", "JavaScript", "best practices"],
-        content: "In this article, we'll cover essential web development best practices that every developer should follow to create high-quality, maintainable websites.\n\n## 1. Write Semantic HTML\nUsing semantic HTML elements like <header>, <nav>, <section>, and <footer> makes your code more readable and improves accessibility.\n\n## 2. Follow CSS Naming Conventions\nAdopt a consistent naming convention like BEM (Block, Element, Modifier) to create more maintainable CSS code.\n\n## 3. Optimize Performance\nMinimize HTTP requests, compress images, and use lazy loading to improve page load times.\n\n## 4. Ensure Accessibility\nMake your website accessible to all users, including those with disabilities, by following WCAG guidelines."
+        author: "GSATechDose Team",
+        categories: ["Global Secure Access", "Entra Internet Access", "Entra Private Access"],
+        tags: ["Global Secure Access", "Entra Internet Access", "Entra Private Access"],
+        content: "![GSATechDose Logo](images/GSATechDose3.png)\n\n🚀 𝗜𝗻𝘁𝗿𝗼𝗱𝘂𝗰𝗶𝗻𝗴 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝗘𝗻𝘁𝗿𝗮 𝗚𝗹𝗼𝗯𝗮𝗹 𝗦𝗲𝗰𝘂𝗿𝗲 𝗔𝗰𝗰𝗲𝘀𝘀 🚀\n\nIn today's dynamic work environment, securing access to applications and data from anywhere is crucial. Microsoft Entra Global Secure Access is a comprehensive Security Service Edge (SSE) solution, designed to meet these modern needs.\n\n🔒 𝗞𝗲𝘆 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀:\n  • 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝗘𝗻𝘁𝗿𝗮 𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁 𝗔𝗰𝗰𝗲𝘀𝘀: Protects access to internet and SaaS apps with an identity-based Secure Web Gateway (SWG).\n  • 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝗘𝗻𝘁𝗿𝗮 𝗣𝗿𝗶𝘃𝗮𝘁𝗲 𝗔𝗰𝗰𝗲𝘀𝘀: Provides secure access to private, corporate resources without requiring a VPN.\n  • 𝗭𝗲𝗿𝗼 𝗧𝗿𝘂𝘀𝘁 𝗣𝗿𝗶𝗻𝗰𝗶𝗽𝗹𝗲𝘀: Built on least privilege, verify explicitly, and assume breach.\n\n🌐 𝗪𝗵𝘆 𝗖𝗵𝗼𝗼𝘀𝗲 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝗘𝗻𝘁𝗿𝗮 𝗚𝗹𝗼𝗯𝗮𝗹 𝗦𝗲𝗰𝘂𝗿𝗲 𝗔𝗰𝗰𝗲𝘀𝘀?\n  • Unified access policy management for employees, partners, and digital workloads.\n  • Continuous monitoring and real-time adjustments to user access.\n  • Seamless integration with Microsoft Defender for Cloud Apps and other security solutions.\n\nJoin us in embracing a secure, cloud-delivered network perimeter that ensures optimal connectivity and security for your organization.\n\n🔗 Learn more: [What is Global Secure Access?](https://learn.microsoft.com/en-us/entra/global-secure-access/overview-what-is-global-secure-access)"
     },
     {
         id: 4,
         title: "GSATechDose #4",
         date: "May 24, 2025",
-        author: "Cloud Team",
-        categories: ["Cloud Computing", "Tutorial"],
-        tags: ["AWS", "Azure", "GCP", "cloud"],
-        content: "Cloud computing has revolutionized the way businesses deploy and manage their IT infrastructure. In this article, we'll explore the basics of cloud computing and its benefits.\n\n## What is Cloud Computing?\nCloud computing is the delivery of computing services—including servers, storage, databases, networking, software, analytics, and intelligence—over the Internet (\"the cloud\").\n\n## Types of Cloud Services\n- **IaaS (Infrastructure as a Service)**: Provides virtualized computing resources over the internet.\n- **PaaS (Platform as a Service)**: Provides a platform allowing customers to develop, run, and manage applications.\n- **SaaS (Software as a Service)**: Delivers software applications over the internet, on-demand and typically on a subscription basis.\n\n## Major Cloud Providers\n- Amazon Web Services (AWS)\n- Microsoft Azure\n- Google Cloud Platform (GCP)\n- IBM Cloud"
-    },    {
+        author: "GSATechDose Team",
+        categories: ["Global Secure Access", "Entra Internet Access"],
+        tags: ["web filtering", "global secure access", "content filtering", "security"],
+        content: "![GSATechDose Logo](images/GSATechDose4.png)\n\n# 🚀 Enhance Your Internet Security with Microsoft Entra 🚀\nIn today's digital age, safeguarding your organization's internet access is crucial. Microsoft Entra Global Secure Access offers robust web content filtering, allowing you to implement granular controls based on website categorization. This ensures a secure and productive online environment for your team.\n🔒 Key Benefits:\n•\tGranular Control: Customize internet access based on specific website categories.\n•\tEnhanced Security: Protect your organization from malicious sites and content.\n•\tProductivity Boost: Ensure employees access only work-related websites during business hours.\nStay ahead in the cybersecurity game with Microsoft Entra! 💼🔐\n\n🔗 Learn more: [Microsoft Entra Internet Access - Global Secure Access | Microsoft Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-internet-access)"
+    },
+    {
         id: 5,
         title: "GSATechDose #5",
         date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
+        author: "GSATechDose Team",
+        categories: ["Global Secure Access", "Entra Internet Access"],
         tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
+        content: "![GSATechDose Logo](images/GSATechDose5.png)\n\n# 🌍 𝗨𝘀𝗲 𝗖𝗮𝘀𝗲 𝗦𝗽𝗼𝘁𝗹𝗶𝗴𝗵𝘁: 𝗦𝗲𝗰𝘂𝗿𝗶𝗻𝗴 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝟯𝟲𝟱 𝗔𝗰𝗰𝗲𝘀𝘀 — 𝗔𝗻𝘆𝘁𝗶𝗺𝗲, 𝗔𝗻𝘆𝘄𝗵𝗲𝗿𝗲\n\nYour workforce is no longer confined to the office. They're working from coffee shops, airports, home offices — and everywhere in between. But is your Microsoft 365 access truly secure in this new reality?\n\nWith 𝗠𝗶𝗰𝗿𝗼𝘀𝗼𝗳𝘁 𝗘𝗻𝘁𝗿𝗮 𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁 𝗔𝗰𝗰𝗲𝘀𝘀, you can ensure:\n\n🔐 𝗟𝗼𝗰𝗮𝘁𝗶𝗼𝗻-𝗶𝗻𝗱𝗲𝗽𝗲𝗻𝗱𝗲𝗻𝘁 𝗖𝗼𝗻𝗱𝗶𝘁𝗶𝗼𝗻𝗮𝗹 𝗔𝗰𝗰𝗲𝘀𝘀 — enforce your policies no matter where users connect\n📶 𝗢𝗽𝘁𝗶𝗺𝗶𝘇𝗲𝗱 𝗰𝗼𝗻𝗻𝗲𝗰𝘁𝗶𝘃𝗶𝘁𝘆 — prioritize M365 traffic for better performance and reliability\n🛡️ 𝗕𝘂𝗶𝗹𝘁-𝗶𝗻 𝗽𝗿𝗼𝘁𝗲𝗰𝘁𝗶𝗼𝗻 — prevent data exfiltration with integrated security capabilities\n🚫 𝗡𝗼 𝗩𝗣𝗡𝘀. No legacy appliances.\n✅ Just fast, secure, 𝗶𝗱𝗲𝗻𝘁𝗶𝘁𝘆-𝗮𝘄𝗮𝗿𝗲 𝗮𝗰𝗰𝗲𝘀𝘀 — designed for the modern workforce\n🔗 Learn more: [Microsoft Entra Internet Access - Global Secure Access | Microsoft Learn](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-internet-access)"
     },
     {
         id: 6,
         title: "GSATechDose #6",
         date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
+        author: "GSATechDose Team",
+        categories: ["Global Secure Access", "Entra Private Access"],
         tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 7,
-        title: "GSATechDose #7",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 8,
-        title: "GSATechDose #8",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 9,
-        title: "GSATechDose #9",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 10,
-        title: "GSATechDose #10",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 11,
-        title: "GSATechDose #11",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 12,
-        title: "GSATechDose #12",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 13,
-        title: "GSATechDose #13",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 14,
-        title: "GSATechDose #14",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-    },
-    {
-        id: 15,
-        title: "GSATechDose #15",
-        date: "May 24, 2025",
-        author: "Security Team",
-        categories: ["Security", "Advanced"],
-        tags: ["zero trust", "conditional access", "security best practices"],
-        content: "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
+        content: "![GSATechDose Logo](images/TechDose6.png)\n\n# 🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
     }
 ];
 
 /**
- * Check if we're running from a web server or file:// protocol
- * @returns {boolean} True if running from a web server
- */
-function isRunningFromServer() {
-    return window.location.protocol === 'http:' || window.location.protocol === 'https:';
-}
-
-/**
- * Load the articles index from articles/index.json
- * @returns {Promise} A promise that resolves with the articles index
- */
-async function loadArticlesIndex() {
-    if (articlesIndex) {
-        return articlesIndex;
-    }
-    
-    // Always try to load from server first
-    try {
-        const response = await fetch('articles/index.json');
-        if (!response.ok) {
-            throw new Error(`Failed to load articles index: ${response.status}`);
-        }
-        articlesIndex = await response.json();
-        console.log('Loaded articles index from server:', articlesIndex.articles.length, 'articles');
-        return articlesIndex;
-    } catch (error) {
-        console.error('Error loading articles index, falling back to embedded data:', error);
-        // Fallback to embedded data
-        articlesIndex = {
-            articles: embeddedArticles.map(article => ({
-                id: article.id,
-                filename: `article-${article.id}.json`,
-                title: article.title,
-                date: article.date,
-                author: article.author,
-                categories: article.categories,
-                tags: article.tags
-            }))
-        };
-        return articlesIndex;
-    }
-}
-
-/**
- * Load all articles from individual JSON files
+ * Load all articles from embedded data
  * @returns {Promise} A promise that resolves with the articles array
  */
 async function loadArticles() {
@@ -373,59 +248,9 @@ async function loadArticles() {
         return articles;
     }
     
-    console.log('Loading articles... Protocol:', window.location.protocol);
+    console.log('Loading articles from embedded data...');
     
-    // Check if we're running from a web server or file:// protocol
-    const isServerProtocol = window.location.protocol === 'http:' || window.location.protocol === 'https:';
-    
-    if (isServerProtocol) {
-        // Try to load from JSON files first when running from server
-        try {
-            // First load the index to know which articles exist
-            const index = await loadArticlesIndex();
-            
-            // Load each article file
-            const articlePromises = index.articles.map(async (articleInfo) => {
-                try {
-                    const response = await fetch(`articles/${articleInfo.filename}`);
-                    if (!response.ok) {
-                        throw new Error(`Failed to load article ${articleInfo.id}: ${response.status}`);
-                    }
-                    const article = await response.json();
-                    console.log(`Loaded article ${article.id}: ${article.title}`);
-                    return article;
-                } catch (error) {
-                    console.error(`Error loading article ${articleInfo.id}:`, error);
-                    // If file loading fails, fallback to embedded data for this specific article
-                    const embeddedArticle = embeddedArticles.find(a => a.id === articleInfo.id);
-                    if (embeddedArticle) {
-                        console.log(`Using embedded fallback for article ${articleInfo.id}`);
-                        return embeddedArticle;
-                    }
-                    return null;
-                }
-            });
-            
-            // Wait for all articles to load
-            const loadedArticles = await Promise.all(articlePromises);
-            
-            // Filter out any failed loads and sort by ID
-            articles = loadedArticles
-                .filter(article => article !== null)
-                .sort((a, b) => a.id - b.id);
-            
-            articlesLoaded = true;
-            console.log('Articles loaded successfully from JSON files:', articles.length);
-            return articles;
-        } catch (error) {
-            console.error('Error loading articles from server, falling back to embedded data:', error);
-        }
-    } else {
-        console.log('Running from file:// protocol, CORS restrictions prevent JSON loading');
-    }
-    
-    // Fallback to embedded data (for file:// protocol or server loading failures)
-    console.log('Using embedded articles data as fallback');
+    // Use embedded articles data
     articles = [...embeddedArticles];
     articlesLoaded = true;
     console.log('Articles loaded from embedded data:', articles.length);
@@ -444,42 +269,9 @@ async function getArticleById(id) {
     // First ensure articles are loaded
     await loadArticles();
     
-    // Check if we're running from a web server and try individual file loading
-    const isServerProtocol = window.location.protocol === 'http:' || window.location.protocol === 'https:';
-    
-    if (isServerProtocol) {
-        try {
-            // Try loading individual file first
-            const response = await fetch(`articles/article-${numericId}.json`);
-            if (response.ok) {
-                const article = await response.json();
-                console.log(`Loaded individual article ${id}: ${article.title}`);
-                
-                // Generate HTML if it hasn't been generated yet
-                if (!article.hasOwnProperty('contentHTML')) {
-                    article.contentHTML = await generateArticleHTML(article);
-                }
-                // Set the content to the generated HTML
-                article.content = article.contentHTML;
-                
-                return article;
-            }
-        } catch (error) {
-            console.log(`Could not load article ${id} from individual file:`, error);
-        }
-    }
-    
-    // If individual file loading failed or we're on file:// protocol, find in loaded articles
+    // Find in loaded articles
     let article = articles.find(article => article.id === numericId);
     
-    if (!article) {
-        // Last resort: check embedded data directly
-        article = embeddedArticles.find(a => a.id === numericId);
-        if (article) {
-            console.log(`Using embedded fallback for article ${id}:`, article.title);
-        }
-    }
-      
     if (article) {
         // Generate HTML if it hasn't been generated yet
         if (!article.hasOwnProperty('contentHTML')) {

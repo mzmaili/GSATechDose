@@ -42,10 +42,11 @@ GSATechDose is a GitHub Pages website for hosting articles with a left-side navi
 
 To add new articles, edit the `js/articles-simple.js` file:
 
-1. Follow the existing article format in the articles array
+1. Add a new article object to the `embeddedArticles` array following the existing format
 2. Include tags and categories for better organization
 3. Use the markdown-like syntax supported by the renderMarkdown function
 4. Ensure proper article IDs are used sequentially
+5. The system will automatically process the content and make it available in the navigation
 
 ## Development Notes
 

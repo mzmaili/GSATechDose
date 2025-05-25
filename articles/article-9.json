@@ -1,9 +1,0 @@
-{
-    "id": 9,
-    "title": "GSATechDose #9",
-    "date": "May 24, 2025",
-    "author": "Security Team",
-    "categories": ["Security", "Advanced"],
-    "tags": ["zero trust", "conditional access", "security best practices"],
-    "content": "![GSATechDose Logo](images/TechDose5.png)\n\n🚫 Still relying on traditional VPNs to connect your workforce to internal resources?\n\nIt's time to rethink that approach.\n\n🔐 Microsoft Entra Private Access is transforming how organizations enable secure remote access — moving beyond legacy VPN models to a modern, identity-first architecture.\n\nHere's why it matters:\n\n💡 **Identity-centric Zero Trust-based access**\n\nAccess decisions are made based on user identity, device health, and real-time risk — not just network location.\n\n🔒 **Granular security controls**\n\nEasily enforce the least privilege access and context-aware policies, minimizing lateral movement and exposure.\n\n⚡ **Faster, more reliable performance**\n\nCloud-native connectivity means better scalability, lower latency, and improved user experience — without backhauling traffic through VPN concentrators.\n\nWhether your team is remote, hybrid, or global — Microsoft Entra Private Access ensures they stay securely connected to what they need, when they need it.\n\n🎥 𝗪𝗮𝘁𝗰𝗵 𝗻𝗼𝘄 𝗮𝗻𝗱 Enable Entra Private Access in less than 10 minutes:\n\nhttps://www.youtube.com/watch?v=MfcZ3zQhF-4"
-}

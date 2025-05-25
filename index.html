@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Mobile web app capabilities -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="msapplication-navbutton-color" content="#2c3e50">
+    <meta name="apple-mobile-web-app-title" content="GSATechDose">
+    
     <title>GSATechDose - Articles</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="shortcut icon" href="images/icon-tech.png" type="image/png">
     <link rel="icon" href="images/icon-tech.png" type="image/png">
+    <!-- Apple touch icons for better mobile experience -->
+    <link rel="apple-touch-icon" href="images/icon-tech.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icon-tech.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon-tech.png">
     <!-- SEO and Accessibility meta tags -->
     <meta name="description" content="GSATechDose is a knowledge-sharing platform dedicated to providing high-quality technical articles about Microsoft Global Secure Access technology.">
     <meta name="keywords" content="GSA, technology, articles, tutorials, software development, web technologies, AI, cloud computing">
@@ -20,37 +33,75 @@
     <meta name="twitter:description" content="Your Regular Dose of Global Secure Access Insights">
     <meta name="twitter:image" content="https://gsatechdose.github.io/images/gsatechdose-logo.png">
 </head>
-<body>    <a href="#article-container" class="skip-link">Skip to content</a>
-    <div class="theme-toggle-container">
+<body>    <a href="#article-container" class="skip-link">Skip to content</a>    <div class="theme-toggle-container">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
             <i class="fas fa-sun"></i>
         </button>
     </div>
-    <div class="container">        <nav class="sidebar">
-            <div class="sidebar-header">                <h2>
-                    <a href="#" id="home-link">
+    
+    <!-- Search Toggle Icon -->
+    <div class="search-toggle-container">
+        <button id="search-toggle" class="search-toggle" aria-label="Toggle search">
+            <i class="fas fa-search"></i>
+        </button>
+    </div>
+    
+    <!-- Mobile Menu Toggle -->
+    <div class="mobile-menu-toggle-container">
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    
+    <!-- Animated Search Box -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search articles">
+            <button id="search-button" aria-label="Search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button id="search-close" class="search-close" aria-label="Close search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- Mobile overlay for sidebar -->
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+          <nav class="sidebar" id="sidebar">
+            <!-- Brand Header - Fixed at top -->
+            <div class="sidebar-header">
+                <div class="brand-container">
+                    <a href="#" id="home-link" class="brand-link">
                         <img src="images/icon-tech.png" alt="GSATechDose Icon" class="sidebar-icon" onerror="this.src='https://via.placeholder.com/24?text=G'">
-                        GSATechDose
+                        <span class="brand-text">GSATechDose</span>
                     </a>
-                </h2>
-            </div>            <div class="sidebar-search">
-                <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search articles">
-                    <button id="search-button" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>            </div>
+                </div>
+            </div>
+            
+            <!-- Main Navigation - Secondary position -->
+            <div class="sidebar-navigation">
+                <ul class="nav-list">
+                    <li><a href="#" id="all-articles-nav" title="View all articles">
+                        <i class="fas fa-list"></i> 
+                        <span>All Articles</span>
+                    </a></li>
+                    <li><a href="#" id="categories-nav" title="Browse by categories">
+                        <i class="fas fa-tags"></i> 
+                        <span>Categories</span>
+                    </a></li>
+                </ul>
+            </div>
+            
+            <!-- Article Menu - Scrollable content area -->
             <div class="sidebar-menu">
                 <ul id="article-menu">
                     <!-- Menu items will be populated by JavaScript -->
                 </ul>
             </div>
-            <div class="sidebar-navigation">
-                <h3>Navigation</h3>
-                <ul class="nav-list">
-                    <li><a href="#" id="all-articles-nav" title="View all articles"><i class="fas fa-list"></i> All Articles</a></li>
-                    <li><a href="#" id="categories-nav" title="Browse by categories"><i class="fas fa-tags"></i> Categories</a></li>
-                </ul>            </div>
         </nav>
         <main class="content">
             <div id="article-container">

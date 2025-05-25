@@ -1,9 +1,0 @@
-{
-    "id": 1,
-    "title": "GSATechDose #1",
-    "date": "May 21, 2025",
-    "author": "GSATechDose Team",
-    "categories": ["Introduction", "Security"],
-    "tags": ["welcome", "Global Secure Access", "Zero Trust"],
-    "content": "![GSATechDose Logo](images/TechDose1.png)\n 🔐 **Did you know?** Microsoft's Global Secure Access brings together Entra Internet Access and Entra Private Access into a unified platform, enabling secure, identity-aware access to both public and private resources.\n\nThis is a game-changer for organizations embracing Zero Trust. With Global Secure Access, you can:\n ✅ Enforce Conditional Access policies across all traffic\n ✅ Protect users from malicious internet threats\n ✅ Secure access to internal apps without VPNs\n ✅ Leverage Microsoft's global edge network for performance and reliability\n\nWhether you're securing SaaS apps or legacy internal systems, this solution helps you do it all, securely and seamlessly.\n\n🔗 Learn more: [Microsoft Learn – What is Global Secure Access](https://learn.microsoft.com/en-us/entra/global-secure-access/)"
-}
