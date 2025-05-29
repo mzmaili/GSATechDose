@@ -582,31 +582,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h2>Your Regular Dose of Global Secure Access Insights</h2>
                     <p>GSATechDose is a knowledge-sharing platform dedicated to providing high-quality technical articles, tutorials, and insights on Microsoft Global Secure Access technology.</p>
                     <p>Our mission is to simplify complex technical concepts and make learning accessible to everyone - from beginners to experienced professionals.</p>
-                    <h3>What We Cover:</h3>
-                    <div class="topic-grid">
-                        <div class="topic-item">
-                            <i class="fas fa-code"></i>
-                            <span>Software Development</span>
-                        </div>
-                        <div class="topic-item">
+                    <h3>What We Cover:</h3>                    <div class="topic-grid">                        <div class="topic-item">
                             <i class="fas fa-globe"></i>
-                            <span>Web Technologies</span>
-                        </div>
-                        <div class="topic-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Artificial Intelligence</span>
-                        </div>
-                        <div class="topic-item">
-                            <i class="fas fa-database"></i>
-                            <span>Data Science</span>
-                        </div>
-                        <div class="topic-item">
-                            <i class="fas fa-cloud"></i>
-                            <span>Cloud Computing</span>
-                        </div>
-                        <div class="topic-item">
+                            <span>GSA Fundamentals</span>                        </div>                        <div class="topic-item">
                             <i class="fas fa-shield-alt"></i>
-                            <span>Cybersecurity</span>
+                            <span>Zero Trust Network Access</span>
+                        </div>                        <div class="topic-item">
+                            <i class="fas fa-globe-americas"></i>
+                            <span>Secure Web Gateway</span>
+                        </div>                        <div class="topic-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Configuration & Deployment</span>
+                        </div>                        <div class="topic-item">
+                            <i class="fas fa-tools"></i>
+                            <span>Troubleshooting Tips & Tricks</span>
+                        </div>
+                        <div class="topic-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Real-World Use Cases & Scenarios</span>
                         </div>
                     </div>
                     <p>Select an article from the menu on the left to begin reading, or browse by category.</p>
